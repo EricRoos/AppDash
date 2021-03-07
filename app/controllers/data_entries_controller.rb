@@ -4,7 +4,7 @@ class DataEntriesController < ApplicationController
 
   # GET /data_entries or /data_entries.json
   def index
-    @data_entries = @dataset.entries
+    @data_entries = DataEntry.where(id: @dataset.entries.map{ |e| e['_id'] })
   end
 
   # POST /data_entries or /data_entries.json

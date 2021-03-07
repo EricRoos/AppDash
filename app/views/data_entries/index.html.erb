@@ -1,5 +1,5 @@
-<turbo-frame id='data-entries'>
-  <% headers = @data_entries.map(&:keys).flatten.uniq.sort %>
+<turbo-frame id='data_entries_table'>
+  <% headers = @data_entries.map(&:data).map(&:keys).flatten.uniq.sort %>
   <table>
     <thead>
       <tr>
@@ -8,14 +8,10 @@
         <% end %>
       </tr>
     </thead>
-
-    <tbody>
+    <tbody id='data_entries'>
+      <%= turbo_stream_from [ @dataset, :data_entries ] %>
       <% @data_entries.each do |data_entry| %>
-        <tr>
-          <% headers.each do |header| %>
-            <td><%= data_entry[header] %></td>
-          <% end %>
-        </tr>
+        <%= render data_entry %>
       <% end %>
     </tbody>
   </table>

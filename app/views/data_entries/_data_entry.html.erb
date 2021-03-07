@@ -1,0 +1,7 @@
+<% headers = data_entry.data.keys.sort %>
+<tr id="<%= dom_id(data_entry) %>">
+  <% headers.each do |header| %>
+    <td><%= data_entry.data[header] %></td>
+  <% end %>
+</tr>
+

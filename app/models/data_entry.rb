@@ -4,6 +4,8 @@ class DataEntry < ApplicationRecord
   before_save :sanitize
   after_commit :copy_to_analytic_db
 
+  broadcasts_to -> (entry) { [entry.dataset, :data_entries ] }, inserts_by: :prepend
+
   def copy_to_analytic_db
     client = dataset.write_client
     exists = client.find(_id: self.id).count > 0
