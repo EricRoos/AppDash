@@ -16,3 +16,7 @@ Then('I should see {string} within {string}') do |text, container|
   end
 end
 
+Given('I am creating a new data set') do
+  visit "/apps/#{@app.id}/datasets/new"
+end
+
