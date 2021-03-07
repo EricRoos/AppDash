@@ -7,5 +7,8 @@ RSpec.feature "DatasetManagements", type: :feature do
     fill_in 'Dataset Name', with: 'Foo'
     click_on 'Create'
     expect(page).to have_content('Dataset was successfully created.')
+    within '#datasets' do
+      expect(page).to have_content('Foo')
+    end
   end
 end
