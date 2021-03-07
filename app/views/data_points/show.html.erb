@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Dataset:</strong>
+  <%= @data_point.dataset_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @data_point.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @data_point.type %>
+</p>
+
+<%= link_to 'Edit', edit_data_point_path(@data_point) %> |
+<%= link_to 'Back', data_points_path %>

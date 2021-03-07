@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_233319) do
+ActiveRecord::Schema.define(version: 2021_03_07_040537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 2021_03_06_233319) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "data_entries", force: :cascade do |t|
+    t.bigint "dataset_id", null: false
+    t.jsonb "data", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dataset_id"], name: "index_data_entries_on_dataset_id"
+  end
+
+  create_table "data_points", force: :cascade do |t|
+    t.bigint "dataset_id", null: false
+    t.string "name"
+    t.string "data_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dataset_id"], name: "index_data_points_on_dataset_id"
+  end
+
   create_table "datasets", force: :cascade do |t|
     t.bigint "app_id", null: false
     t.string "name"
@@ -29,5 +46,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_233319) do
     t.index ["app_id"], name: "index_datasets_on_app_id"
   end
 
+  add_foreign_key "data_entries", "datasets"
+  add_foreign_key "data_points", "datasets"
   add_foreign_key "datasets", "apps"
 end

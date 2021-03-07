@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>App:</strong>
-  <%= @dataset.app_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
+<h2>
   <%= @dataset.name %>
-</p>
+</h2>
+<%= link_to 'Edit', edit_app_dataset_path(@app, @dataset) %>
 
-<%= link_to 'Edit', edit_app_dataset_path(@app, @dataset) %> |
+<h3>Data Point Configuration</h3>
+<turbo-frame id='data-points' src="<%= app_dataset_data_points_path(@app, @dataset) %>">
+</turbo-frame>
+
+<h3>Latest Data</h3>
+<turbo-frame id='data-entries' src="<%= app_dataset_data_entries_path(@app, @dataset) %>">
+</turbo-frame>

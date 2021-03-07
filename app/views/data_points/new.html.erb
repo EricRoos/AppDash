@@ -1,0 +1,5 @@
+<turbo-frame id='data-points'>
+  <%= render 'form', data_point: @data_point %>
+
+  <%= link_to 'Cancel', app_dataset_data_points_path(@app, @dataset) %>
+</turbo-frame>

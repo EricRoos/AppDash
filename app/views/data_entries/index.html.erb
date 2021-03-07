@@ -1,0 +1,22 @@
+<turbo-frame id='data-entries'>
+  <% headers = @data_entries.map(&:keys).flatten.uniq.sort %>
+  <table>
+    <thead>
+      <tr>
+        <% headers.each do |header| %>
+          <th><%= header %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @data_entries.each do |data_entry| %>
+        <tr>
+          <% headers.each do |header| %>
+            <td><%= data_entry[header] %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</turbo-frame>
