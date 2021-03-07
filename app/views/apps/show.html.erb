@@ -3,16 +3,8 @@
 <div id='app'>
 
   <h2>Datasets</h2>
-  <div id='datasets'>
-    <ul>
-      <% @app.datasets.each do |dataset| %>
-        <li><%= dataset.name %></li>
-      <% end %>
-      <li>
-        <%= link_to 'New Dataset', new_app_dataset_path(@app) %>
-      </li>
-    </ul>
-
-  </div>
-  <%= link_to 'Back', apps_path %>
+  <turbo-frame id='datasets' src="<%= app_datasets_path(@app) %>">
+  </turbo-frame>
 </div>
+<hr/>
+<%= link_to 'Back', apps_path %>

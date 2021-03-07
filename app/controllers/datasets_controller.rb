@@ -4,7 +4,7 @@ class DatasetsController < ApplicationController
 
   # GET /datasets or /datasets.json
   def index
-    @datasets = Dataset.all
+    @datasets = Dataset.order(created_at: :desc).all
   end
 
   # GET /datasets/1 or /datasets/1.json
@@ -26,6 +26,7 @@ class DatasetsController < ApplicationController
 
     respond_to do |format|
       if @dataset.save
+        format.turbo_stream { redirect_to app_datasets_path(@app), notice: "Dataset was successfully created." }
         format.html { redirect_to @app, notice: "Dataset was successfully created." }
         format.json { render :show, status: :created, location: @dataset }
       else
@@ -52,6 +53,7 @@ class DatasetsController < ApplicationController
   def destroy
     @dataset.destroy
     respond_to do |format|
+      format.turbo_stream { redirect_to app_datasets_path(@app), notice: "Dataset was successfully deleted." }
       format.html { redirect_to datasets_url, notice: "Dataset was successfully destroyed." }
       format.json { head :no_content }
     end

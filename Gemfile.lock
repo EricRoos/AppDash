@@ -144,6 +144,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.1.4)
     regexp_parser (2.1.1)
     rspec-core (3.10.1)
       rspec-support (~> 3.10.0)
@@ -186,9 +187,8 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
+    turbo-rails (0.5.9)
+      rails (>= 6.0.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     web-console (4.1.0)
@@ -224,10 +224,11 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  redis (~> 4.0)
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
-  turbolinks (~> 5)
+  turbo-rails
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers

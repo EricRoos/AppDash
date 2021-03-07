@@ -1,0 +1,6 @@
+<ul>
+  <%= render collection: @app.datasets %>
+  <li>
+    <%= link_to 'New Dataset', new_app_dataset_path(@app) %>
+  </li>
+</ul>

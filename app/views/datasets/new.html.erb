@@ -1,5 +1,7 @@
-<h1>New Dataset</h1>
+<turbo-frame id="datasets">
+  <div>
+    <%= render 'form', dataset: @dataset %>
 
-<%= render 'form', dataset: @dataset %>
-
-<%= link_to 'Back', app_datasets_path(@app) %>
+    <%= link_to 'Cancel', app_datasets_path(@app) %>
+  </div>
+</turbo-frame>
