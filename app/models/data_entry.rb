@@ -31,6 +31,7 @@ class DataEntry < ApplicationRecord
     dataset.data_points.pluck(:name).each do |key|
       new_data[key] = data[key] || data[key.to_sym]
     end
+    new_data["created_at"] = Time.now.utc
     self.data = new_data
   end
 end

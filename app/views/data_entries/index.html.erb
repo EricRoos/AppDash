@@ -1,9 +1,9 @@
 <turbo-frame id='data_entries_table'>
-  <% headers = @data_entries.map(&:data).map(&:keys).flatten.uniq.sort %>
-  <table>
+  <% @headers = @dataset.data_points.collect(&:name) %>
+  <table class='table table-sm'>
     <thead>
       <tr>
-        <% headers.each do |header| %>
+        <% @headers.each do |header| %>
           <th><%= header %></th>
         <% end %>
       </tr>
@@ -16,3 +16,4 @@
     </tbody>
   </table>
 </turbo-frame>
+

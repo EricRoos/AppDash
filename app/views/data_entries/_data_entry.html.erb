@@ -1,6 +1,6 @@
-<% headers = data_entry.data.keys.sort %>
+<% @headers ||= data_entry.dataset.data_points.collect(&:name) %>
 <tr id="<%= dom_id(data_entry) %>">
-  <% headers.each do |header| %>
+  <% @headers.each do |header| %>
     <td><%= data_entry.data[header] %></td>
   <% end %>
 </tr>
