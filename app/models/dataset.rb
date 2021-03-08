@@ -1,6 +1,8 @@
 class Dataset < ApplicationRecord
   belongs_to :app
   has_many :data_points
+  has_many :data_entries
+
   validates_presence_of :name
 
   def entries(filters={})
