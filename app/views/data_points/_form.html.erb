@@ -12,10 +12,7 @@
   <% end %>
 
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= render(TextInputFieldComponent.new(form: form, field: :name)) %>
 
   <div class="actions">
     <%= form.submit %>

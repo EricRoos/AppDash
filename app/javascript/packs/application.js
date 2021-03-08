@@ -7,6 +7,11 @@ import {Turbo, cable} from "@hotwired/turbo-rails"
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require("arrive")
+
+document.arrive(".form-outline input", (newElem) => {
+  new mdb.Input(newElem.parentElement);
+});
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

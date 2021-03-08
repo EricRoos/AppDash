@@ -4,7 +4,12 @@ class DataEntriesController < ApplicationController
 
   # GET /data_entries or /data_entries.json
   def index
-    @data_entries = DataEntry.where(id: @dataset.entries.map{ |e| e['_id'] })
+    page = (params[:page] || 1).to_i
+    document_query = @dataset.entries({}, page: page, per_page: 10)
+    @data_entries = DataEntry.where(id: document_query[:records].map{ |e| e['_id'] })
+      .paginate(page: 1, per_page: 10)
+    @data_entries.total_entries = document_query[:total_match]
+    @data_entries.current_page = page
   end
 
   # POST /data_entries or /data_entries.json

@@ -10,11 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="form-outline mb-4">
-    <%= form.text_field :name, class: 'form-control' %>
-    <%= form.label :name, class: 'form-label' %>
-  </div>
+  <%= render(TextInputFieldComponent.new(form: form, field: :name)) %>
 
   <div class="actions">
     <%= form.submit class: 'btn btn-primary'%>
