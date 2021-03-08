@@ -27,7 +27,7 @@ class App < ApplicationRecord
       .create(
         mongo_access_user,
         password: base_password + self.db_salt,
-        roles: [ Mongo::Auth::Roles::READ]
+        roles: [ Mongo::Auth::Roles::READ ]
       )
     client.close
   end
@@ -37,7 +37,7 @@ class App < ApplicationRecord
   end
 
   def mongo_access_user
-    "web"
+    "#{Rails.env}-web"
   end
 
   def base_password
